@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "376450271884",
+    "project_id": "shayarifire",
+    "storage_bucket": "shayarifire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376450271884:android:a6d26b91745ff3839189a9",
+        "android_client_info": {
+          "package_name": "com.example.shayarifire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLnJItwayfPdsFx55SDarOkK7UrUyA09s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
