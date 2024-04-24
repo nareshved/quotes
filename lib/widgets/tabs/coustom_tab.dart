@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shayarifire/firebase/firebase_provider.dart';
 import '../../tab_pages/detail_page.dart';
@@ -6,30 +5,31 @@ import '../../tab_pages/detail_page.dart';
 
 /// get firebase data from specific doc
 
-Widget myTileTab ({ String? author, required String docName,required BuildContext context}) {
+Widget myTileTab ({ String? author, required String docName,}) {
 
   return FutureBuilder (
-      future: FirebaseProvider.firestore.collection("shayari").doc(docName).get(),
+      future: FirebaseProvider.firestore.collection("quotes").doc(docName).get(),
       builder: (context, snapshot){
         if(snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator(),);
         } else if (snapshot.hasData) {
           final mData = snapshot.data!;
           return ListView.builder(
-              itemCount: mData["shayari"].length,  /// fixed doubts
+              itemCount: mData["quotes"].length,  /// fixed doubts
               itemBuilder: (ctx, index){
             /*    log('${mData["shayari"][index]}');  //// print doubts*/
                 return ListTile(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(
-                      mData: mData["shayari"][index],
-                     // sir   mData["shayari"][index],
+                      mData: mData["quotes"][index],
+                      publisher: docName,
 
+                     // sir   mData["shayari"][index],
 
                     ),),);
                   },
                   leading: const CircleAvatar(backgroundColor: Colors.deepPurple),
-                  title: Text(mData["shayari"][index], style: const TextStyle(overflow: TextOverflow.ellipsis),),///fixed doubts
+                  title: Text(mData["quotes"][index], style: const TextStyle(overflow: TextOverflow.ellipsis),),///fixed doubts
                 );
                 //0
                 //1

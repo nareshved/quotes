@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../tab_pages/favourite.dart';
+import 'drawer_pages/favourite.dart';
+import 'drawer_pages/privacy.dart';
 
 Widget mDrawerItem ( BuildContext ctx){
 
-  final mq = MediaQuery.of(ctx);
+   final mq = MediaQuery.of(ctx);
 
  //const
-  return  Column(
+  return  ListView(
+    shrinkWrap: true,
     children: [
       ListTile(
         leading: const Icon(Icons.local_grocery_store),
@@ -134,7 +135,7 @@ Widget mDrawerItem ( BuildContext ctx){
         title: const Text("Favorite Status"),
         onTap: (){
           Navigator.pop(ctx);
-          Navigator.push(ctx, MaterialPageRoute(builder: (context) => const FavouritePage(),));
+          Navigator.push(ctx, MaterialPageRoute(builder: (context) => FavouritePage()));
         },
       ),
       ListTile(
@@ -142,7 +143,7 @@ Widget mDrawerItem ( BuildContext ctx){
         title: const Text("Privacy Policy"),
         onTap: (){
           Navigator.pop(ctx);
-          Navigator.push(ctx, MaterialPageRoute(builder: (context) => const Scaffold(),));
+          Navigator.push(ctx, MaterialPageRoute(builder: (context) => const PrivacyPolicyPage(),));
         },
       ),
       ListTile(
@@ -192,7 +193,7 @@ Widget mDrawerItem ( BuildContext ctx){
                            ),
                     SizedBox(height: mq.size.height * 0.017,),
                     const Center(child: Text("Contact me", style: TextStyle(fontSize: 17),)),
-                    const Center(child: Text("Email : nareshved1996@gmail.com",)),
+                    const Center(child: Text("Email : Nkraj021@gmail.com",)),
                 //    const Center(child: Text("Copyright @ 2024",)),
 
 

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:shayarifire/tab_pages/chat_tab_page.dart';
-import 'package:shayarifire/tab_pages/good_morning.dart';
-import 'package:shayarifire/tab_pages/good_night.dart';
-import 'package:shayarifire/tab_pages/latest.dart';
-import 'package:shayarifire/tab_pages/motivation.dart';
-import 'package:shayarifire/tab_pages/whatsapp.dart';
+import 'package:shayarifire/tab_pages/Sandeep_Maheshwari.dart';
+import 'package:shayarifire/tab_pages/Shiv_Khera.dart';
+import 'package:shayarifire/tab_pages/Sonu_Sharma.dart';
+import 'package:shayarifire/tab_pages/Ujjwal_Patni.dart';
+import 'package:shayarifire/tab_pages/Vivek_Bindra.dart';
 
 import '../drawer/drawer_items.dart';
+import '../firebase/firebase_provider.dart';
 
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
-
 
   @override
   State<StatefulWidget> createState() {
@@ -23,9 +22,9 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final mq = MediaQuery.of(context);
+
     return DefaultTabController(
-      length: 6,
+      length: 5,
       child: Scaffold(
         drawer: Drawer(
           child: Column(
@@ -33,7 +32,7 @@ class HomePageState extends State<HomePage> {
               const UserAccountsDrawerHeader(
                 arrowColor: Colors.white,
                   currentAccountPicture: Icon(Icons.person_pin, size: 55, color: Colors.white),
-                  accountName: Text("Naresh VED"), accountEmail: Text("nareshved1996@gmail.com")),
+                  accountName: Text("Naresh VED"), accountEmail: Text("nkraj021@gmail.com")),
               mDrawerItem(context),
             ],
           ),
@@ -46,7 +45,7 @@ class HomePageState extends State<HomePage> {
               child: Icon(Icons.search),
             ),
           ],
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.teal,
           foregroundColor: Colors.white,
           title: const Text("Quotes"),
           bottom: const TabBar(
@@ -55,38 +54,38 @@ class HomePageState extends State<HomePage> {
             isScrollable: true,
             tabs: [
               Tab(
-                text: "Chat",
+                text: "Sandeep Maheshwari",
               ),
               Tab(
-                text: "WhatsApp",
+                text: "Sonu Sharma",
               ),
               Tab(
-                text: "Latest",
+                text: "Shiv Khera",
               ),
               Tab(
-                text: "Motivation",
+                text: "Ujjwal Patni",
               ),
               Tab(
-                text: "Good Morning",
-              ),
-              Tab(
-                text: "Good Night",
+                text: "Vivek Bindra",
               ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           /*shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(155)),*/
-          onPressed: (){}, child: const Icon(Icons.refresh),
+          onPressed: (){
+            setState(() {
+              FirebaseProvider.firestore.collection("quotes").get();
+            });
+          }, child: const Icon(Icons.refresh),
         ),
         body: const TabBarView(
           children: [
-            ChatTabPage(),
-            WhatsAppTab(),
-            LatestTab(),
-            MotivationTab(),
-            GoodMorningTab(),
-            GoodNightTab(),
+            SandeepMaheshwari(),
+           SonuSharma(),
+            ShivKhera(),
+            UjjwalPatni(),
+            VivekBindra(),
           ],
         ),
       ),
